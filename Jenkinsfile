@@ -24,6 +24,7 @@ pipeline {
         stage ('terraform FMT && terraform validate && terraform plan') {
             steps {
                 sh 'terraform fmt && terraform validate && terraform plan -out plan.txt'
+                sh 'cat plan.txt'
             }
         }
         // stage ('Terraform apply, Create EKS Cluster') {
