@@ -28,7 +28,7 @@ pipeline {
         }
         stage ('Terraform apply, Create EKS Cluster') {
             steps {
-                sh 'terraform apply --auto-approve'
+                sh 'terraform destroy --auto-approve'
             }
         }
     }
