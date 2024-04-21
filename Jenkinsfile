@@ -21,9 +21,19 @@ pipeline {
                 sh 'terraform init'
             }
         }
-        stage ('terraform FMT && terraform validate && terraform plan') {
+        stage ('Terraform FMT') {
             steps {
-                sh 'terraform fmt && terraform validate && terraform plan -out plan.txt'
+                sh 'terraform fmt'
+            }
+        }
+        stage ('Terraform Validate') {
+            steps {
+                sh 'terraform validate'
+            }
+        }
+        stage ('Terraform Plan') {
+            steps {
+                sh 'terraform plan -out plan.txt'
             }
         }
         // stage ('Terraform apply, Create EKS Cluster') {
@@ -31,11 +41,11 @@ pipeline {
         //         sh 'terraform apply --auto-approve'
         //     }
         // }
-        stage ('Get Pods and Nodes') {
-            steps {
-                sh 'kubectl get pods -A'
-                sh 'kubectl get nodes'
-            }
-        }
+        // stage ('Get Pods and Nodes') {
+        //     steps {
+        //         sh 'kubectl get pods -A'
+        //         sh 'kubectl get nodes'
+        //     }
+        // }
     }
 }
