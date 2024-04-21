@@ -26,10 +26,10 @@ pipeline {
                 sh 'terraform fmt && terraform validate && terraform plan -out plan.txt'
             }
         }
-        stage ('Terraform apply, Create EKS Cluster') {
-            steps {
-                sh 'terraform apply --auto-approve'
-            }
-        }
+        // stage ('Terraform apply, Create EKS Cluster') {
+        //     steps {
+        //         sh 'terraform apply --auto-approve'
+        //     }
+        // }
     }
 }
