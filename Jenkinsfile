@@ -36,16 +36,16 @@ pipeline {
                 sh 'terraform plan -out plan.txt'
             }
         }
-        // stage ('Terraform apply, Create EKS Cluster') {
-        //     steps {
-        //         sh 'terraform apply --auto-approve'
-        //     }
-        // }
-        // stage ('Get Pods and Nodes') {
-        //     steps {
-        //         sh 'kubectl get pods -A'
-        //         sh 'kubectl get nodes'
-        //     }
-        // }
+        stage ('Terraform apply, Create EKS Cluster') {
+            steps {
+                sh 'terraform apply --auto-approve'
+            }
+        }
+        stage ('Get Pods and Nodes') {
+            steps {
+                sh 'kubectl get pods -A'
+                sh 'kubectl get nodes'
+            }
+        }
     }
 }
